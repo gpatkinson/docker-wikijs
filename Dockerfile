@@ -28,13 +28,13 @@ RUN \
   ln -s /usr/bin/python3 /usr/bin/python && \
   echo "**** install wiki.js ****" && \
   mkdir -p /app/wiki && \
-  if [ -z ${WIKIJS_RELEASE} ]; then \
-    WIKIJS_RELEASE=$(curl -sX GET "https://api.github.com/repos/Requarks/wiki/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
-  fi && \
+  # if [ -z ${WIKIJS_RELEASE} ]; then \
+  #  WIKIJS_RELEASE=$(curl -sX GET "https://api.github.com/repos/Requarks/wiki/releases/latest" \
+  #  | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+  # fi && \
   curl -o \
     /tmp/wiki.tar.gz -L \
-    "https://github.com/Requarks/wiki/releases/download/${WIKIJS_RELEASE}/wiki-js.tar.gz" && \
+    "https://github.com/gpatkinson/wikijs-nosocial/archive/refs/tags/latest.tar.gz" && \
   tar xf \
     /tmp/wiki.tar.gz -C \
     /app/wiki/ && \
